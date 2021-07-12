@@ -59,8 +59,8 @@ public class DaoCategory extends BasicDao implements IDaoCategory{
 	 * @param una category
 	 * @author Gruppo2, Andrea
 	 */
-	public void addCategory(Category c) {
-		execute("INSERT INTO categories(nome) VALUES (?)",c.getName());
+	public int addCategory(Category c) {
+		return insertAndGetId("INSERT INTO categories(nome) VALUES (?)",c.getName());
 	}
 
 	@Override
@@ -68,8 +68,8 @@ public class DaoCategory extends BasicDao implements IDaoCategory{
 	 * @param una category
 	 * @author Gruppo2, Andrea
 	 */
-	public void updateCategory(Category c) {
-		execute("UPDATE categories SET nome=? WHERE id=?",c.getName(),c.getId());
+	public boolean updateCategory(Category c) {
+		return isExecute("UPDATE categories SET nome=? WHERE id=?",c.getName(),c.getId());
 	}
 
 	@Override
@@ -77,7 +77,7 @@ public class DaoCategory extends BasicDao implements IDaoCategory{
 	 * @param l' id di una category
 	 * @author Gruppo2, Andrea
 	 */
-	public void deleteCategory(int id) {
-		execute("DELETE FROM categories WHERE id=?",id);
+	public boolean deleteCategory(int id) {
+		return isExecute("DELETE FROM categories WHERE id=?",id);
 	}
 }

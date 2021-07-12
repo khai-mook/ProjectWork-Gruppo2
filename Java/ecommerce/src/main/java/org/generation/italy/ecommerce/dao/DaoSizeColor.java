@@ -31,8 +31,8 @@ public class DaoSizeColor extends BasicDao implements IDaoSizeColor{
 	 * @param un oggetto SizeColor
 	 * @author Gruppo2,Andrea
 	 */
-	public void addSizeColor(SizeColor c) {
-		execute("INSERT INTO sizecolors (itemid,size,color)VALUES(?,?,?)",
+	public int addSizeColor(SizeColor c) {
+		return insertAndGetId("INSERT INTO sizecolors (itemid,size,color)VALUES(?,?,?)",
 				c.getItemId(),c.getSize(),c.getColor());
 	}
 
@@ -42,8 +42,8 @@ public class DaoSizeColor extends BasicDao implements IDaoSizeColor{
 	 * @param l' id di un oggetto SizeColor
 	 * @author Gruppo2,Andrea
 	 */
-	public void deleteSizeColor(int id) {
-		execute("DELETE FROM sizecolors WHERE id=?",id);
+	public boolean deleteSizeColor(int id) {
+		return isExecute("DELETE FROM sizecolors WHERE id=?",id);
 	}
 
 	@Override
@@ -52,8 +52,8 @@ public class DaoSizeColor extends BasicDao implements IDaoSizeColor{
 	 * @param un oggetto SyzeColor
 	 * @author Gruppo2,Andrea
 	 */
-	public void updateSizeColor(SizeColor c) {
-		execute("UPDATE sizecolors SET itemid=?,size=?,color=? WHERE id=?",
+	public boolean updateSizeColor(SizeColor c) {
+		return isExecute("UPDATE sizecolors SET itemid=?,size=?,color=? WHERE id=?",
 				c.getItemId(),c.getSize(),c.getColor(),c.getId());
 	}
 

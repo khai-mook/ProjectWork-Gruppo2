@@ -47,8 +47,8 @@ public class DaoImages extends BasicDao implements IDaoImages{
 	 * @param un immagine
 	 * @author Gruppo2, Andrea
 	 */
-	public void addImage(Image i) {
-		execute("INSERT INTO images (itemid,filepath)VALUES (?,?)",i.getItemid(),i.getFilepath());
+	public int addImage(Image i) {
+		return insertAndGetId("INSERT INTO images (itemid,filepath)VALUES (?,?)",i.getItemid(),i.getFilepath());
 	}
 
 	@Override
@@ -56,8 +56,8 @@ public class DaoImages extends BasicDao implements IDaoImages{
 	 * @param un immagine
 	 * @author Gruppo2, Andrea
 	 */
-	public void updateImage(Image i) {
-		execute("UPDATE images SET itemid=?,filepath=? WHERE id=?",i.getItemid(),i.getFilepath(),i.getId());
+	public boolean updateImage(Image i) {
+		return isExecute("UPDATE images SET itemid=?,filepath=? WHERE id=?",i.getItemid(),i.getFilepath(),i.getId());
 	}
 
 	@Override
@@ -65,7 +65,7 @@ public class DaoImages extends BasicDao implements IDaoImages{
 	 * @param l' id di un immagine
 	 * @author Gruppo2, Andrea
 	 */ 
-	public void deleteImage(int id) {
-		execute("DELETE FROM images WHERE id=?",id);
+	public boolean deleteImage(int id) {
+		return isExecute("DELETE FROM images WHERE id=?",id);
 	}
 }

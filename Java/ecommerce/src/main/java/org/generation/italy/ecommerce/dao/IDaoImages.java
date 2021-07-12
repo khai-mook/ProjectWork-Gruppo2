@@ -6,7 +6,7 @@ import org.generation.italy.ecommerce.model.Image;
 
 public interface IDaoImages {
 	List<Image> getImages();//solo per il test 
-	void addImage(Image i);
-	void updateImage(Image i);
-	void deleteImage(int id);
+	int addImage(Image i);
+	boolean updateImage(Image i);
+	boolean deleteImage(int id);
 }

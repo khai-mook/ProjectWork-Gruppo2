@@ -87,8 +87,8 @@ public class DaoItems extends BasicDao implements IDaoItems
 	 * @param un Item
 	 * @author Gruppo2, Andrea
 	 */
-	public void addItem(Item item) {
-		execute("INSERT INTO items (name,price,categoryid,quantity)VALUES(?,?,?,?)",
+	public int addItem(Item item) {
+		return insertAndGetId("INSERT INTO items (name,price,categoryid,quantity)VALUES(?,?,?,?)",
 				item.getName(),item.getPrice(),item.getCategory().getId(),item.getQuantity());
 	}
 
@@ -98,8 +98,8 @@ public class DaoItems extends BasicDao implements IDaoItems
 	 * @param un Item
 	 * @author Gruppo2, Andrea
 	 */
-	public void updateItem(Item item) {
-		execute("UPDATE items SET name=?, price=?, categoryid=? quantity=? WHERE id=?",
+	public boolean updateItem(Item item) {
+		return isExecute("UPDATE items SET name=?, price=?, categoryid=? quantity=? WHERE id=?",
 				item.getName(),item.getPrice(),item.getCategory().getId(),item.getQuantity(),item.getId());
 	}
 
@@ -109,8 +109,8 @@ public class DaoItems extends BasicDao implements IDaoItems
 	 * @param l' id di Un Item
 	 * @author Gruppo2, Andrea
 	 */
-	public void deleteItem(int id) {
-		execute("DELETE FROM items WHERE id=?",id);
+	public boolean deleteItem(int id) {
+		return isExecute("DELETE FROM items WHERE id=?",id);
 	}
 	
 }

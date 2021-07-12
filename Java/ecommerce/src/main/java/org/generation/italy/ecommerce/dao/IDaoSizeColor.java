@@ -10,8 +10,8 @@ public interface IDaoSizeColor {
 	SizeColor getSizeColorById(int id);
 	SizeColor getSizeColorByColor(String color);
 	SizeColor getSizeColorBySize(String size);	
-	void addSizeColor(SizeColor c);
-	void deleteSizeColor(int id);
-	void updateSizeColor(SizeColor c);
+	int addSizeColor(SizeColor c);
+	boolean deleteSizeColor(int id);
+	boolean updateSizeColor(SizeColor c);
 	
 }

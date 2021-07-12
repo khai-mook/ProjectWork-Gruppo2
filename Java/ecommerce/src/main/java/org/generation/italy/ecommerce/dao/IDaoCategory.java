@@ -9,8 +9,8 @@ public interface IDaoCategory
 {
 	List<Category>getCategories();
 	Category getCategory(int id);
-	void addCategory(Category c);
-	void updateCategory(Category c);
-	void deleteCategory(int id);
+	int addCategory(Category c);
+	boolean updateCategory(Category c);
+	boolean deleteCategory(int id);
 
 }

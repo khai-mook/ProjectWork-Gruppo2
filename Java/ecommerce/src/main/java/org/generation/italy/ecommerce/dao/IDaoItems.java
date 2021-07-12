@@ -9,7 +9,7 @@ public interface IDaoItems
 {
 	List<Item> getItems();
 	Item getItem(int id);
-	void addItem(Item item);
-	void updateItem (Item item);
-	void deleteItem(int id);
+	int addItem(Item item);
+	boolean updateItem (Item item);
+	boolean deleteItem(int id);
 }
