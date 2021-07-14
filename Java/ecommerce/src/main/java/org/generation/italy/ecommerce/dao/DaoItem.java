@@ -73,7 +73,7 @@ public class DaoItem extends BasicDao implements IDaoItem {
 		item.setImages(images);
 		return item;
 	}
-
+	
 	@Override
 	public int addItem(Item item, int typeId) {
 		return insertAndGetId("insert into items(size, color, quantity, typeid) values(?,?,?,?)",

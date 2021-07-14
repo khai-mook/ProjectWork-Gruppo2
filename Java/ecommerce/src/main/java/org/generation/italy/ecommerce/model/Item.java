@@ -12,7 +12,7 @@ public class Item implements IMappablePro {
 	private int quantity;
 	List<Image> images;
 	
-	private Item(int id, String size, String color, int quantity, List<Image> images) {
+	public Item(int id, String size, String color, int quantity, List<Image> images) {
 		super();
 		this.id = id;
 		this.size = size;
@@ -20,6 +20,8 @@ public class Item implements IMappablePro {
 		this.quantity = quantity;
 		this.images = images;
 	}
+	
+	public Item() {}
 
 	public int getId() {
 		return id;
