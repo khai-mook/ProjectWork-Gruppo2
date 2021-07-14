@@ -7,9 +7,10 @@ import java.util.Map;
 import org.generation.italy.ecommerce.model.Image;
 import org.generation.italy.ecommerce.util.BasicDao;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Repository;
 
 
-
+@Repository
 public class DaoImages extends BasicDao implements IDaoImages{
 
 	public DaoImages(
@@ -34,7 +35,7 @@ public class DaoImages extends BasicDao implements IDaoImages{
 		List<Map<String,String>>map=getAll("SELECT * FROM categories");
 		
 		for (Map<String, String> m : map) {
-			Image i=new Image();//controllare se con la classe da ancora errore!!!
+			Image i=new Image();
 			i.fromMap(m);
 			ris.add(i);
 		}

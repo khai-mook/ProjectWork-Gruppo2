@@ -7,7 +7,10 @@ import java.util.Map;
 import org.generation.italy.ecommerce.model.Category;
 import org.generation.italy.ecommerce.util.BasicDao;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Repository;
 
+
+@Repository
 public class DaoCategory extends BasicDao implements IDaoCategory {
 
 	public DaoCategory(
@@ -28,7 +31,7 @@ public class DaoCategory extends BasicDao implements IDaoCategory {
 		List<Map<String,String>>map=getAll("SELECT * FROM categories");
 		
 		for (Map<String, String> m : map) {
-			Category c=new Category();//controllare se con la classe da ancora errore!!!
+			Category c=new Category();
 			c.fromMap(m);
 			ris.add(c);
 		}
@@ -46,7 +49,7 @@ public class DaoCategory extends BasicDao implements IDaoCategory {
 		Category ris=null;
 		Map<String,String>map=getOne("SELECT* FROM categories WHERE id=?",id);
 		if(map!=null) {
-			ris=new Category();//controllare se con la classe da ancora errore!!!
+			ris=new Category();
 			ris.fromMap(map);
 		}
 		

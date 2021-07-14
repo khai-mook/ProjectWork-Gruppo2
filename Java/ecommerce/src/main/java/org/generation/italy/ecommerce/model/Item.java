@@ -23,6 +23,10 @@ public class Item implements IMappablePro {
 	
 	public Item() {}
 
+	public Item() {
+		super();
+	}
+	
 	public int getId() {
 		return id;
 	}

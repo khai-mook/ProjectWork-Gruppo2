@@ -17,6 +17,7 @@ public class DaoItemTypes extends BasicDao implements IDaoItemTypes {
 		
 	}
 
+//============================METODI GET========================================
 	@Override
 	public List<ItemType> getItemTypes() {
 		List<ItemType> ris = new ArrayList<>();
@@ -39,22 +40,25 @@ public class DaoItemTypes extends BasicDao implements IDaoItemTypes {
 			type.setItems(items);
 			ris.add(type);
 		}
-		return null;
+		return ris;
 	}
 
 	@Override
 	public ItemType getItemType(int id) {
+		
 		Map<String, String> map = getOne("select * from itemtypes where id=?", id);
 		ItemType type = IMappablePro.fromMap(ItemType.class, map);
 		// TODO : rifattorizzazione category
-		Category category = IMappablePro.fromMap(
-				Category.class, 
-				getOne("select * from categories where id=?",
-						map.get("categoryid")
-						)
-				);
+		Category category = extracted(map);
 		List<Map<String, String>> itemMaps = getAll("select * from items where typeid=?", map.get("id"));
 		// TODO: rifattorizzazione italy
+		List<Item> items = extracted(itemMaps);
+		type.setItems(items);
+		type.setCategory(category);
+		return type;
+	}
+
+	private List<Item> extracted(List<Map<String, String>> itemMaps) {
 		List<Item> items = new ArrayList<>();
 		for(Map<String, String> itemMap : itemMaps) {
 			items.add(
@@ -62,11 +66,20 @@ public class DaoItemTypes extends BasicDao implements IDaoItemTypes {
 					fromMap(Item.class, itemMap)
 					);
 		}
-		type.setItems(items);
-		type.setCategory(category);
-		return type;
+		return items;
 	}
 
+	private Category extracted(Map<String, String> map) {
+		Category category = IMappablePro.fromMap(
+				Category.class, 
+				getOne("select * from categories where id=?",
+						map.get("categoryid")
+						)
+				);
+		return category;
+	}
+
+//============================METODI CRUD=======================================
 	@Override
 	public int addItemType(ItemType type) {
 		return insertAndGetId("insert into itemtypes(name, price, discount, categoryid) values(?,?,?,?)",
