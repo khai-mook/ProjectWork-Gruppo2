@@ -4,27 +4,21 @@ import java.util.List;
 
 import org.generation.italy.ecommerce.util.IMappablePro;
 
-public class Item implements IMappablePro
-{
-
-	private int id;
-	private String name;
-	private double price;
-	private Category category;
-	private int quantity;
-	private List<Image> images;
+public class Item implements IMappablePro {
 	
-	public Item(int id, String name, double price, Category category, int quantity, List<Image> images) 
-	{
+	private int id;
+	private String size;
+	private String color;
+	private int quantity;
+	List<Image> images;
+	
+	private Item(int id, String size, String color, int quantity, List<Image> images) {
+		super();
 		this.id = id;
-		this.name = name;
-		this.price = price;
-		this.category = category;
+		this.size = size;
+		this.color = color;
 		this.quantity = quantity;
 		this.images = images;
-	}
-
-	public Item() {
 	}
 
 	public int getId() {
@@ -35,28 +29,20 @@ public class Item implements IMappablePro
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getSize() {
+		return size;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setSize(String size) {
+		this.size = size;
 	}
 
-	public double getPrice() {
-		return price;
+	public String getColor() {
+		return color;
 	}
 
-	public void setPrice(double price) {
-		this.price = price;
-	}
-
-	public Category getCategory() {
-		return category;
-	}
-
-	public void setCategory(Category category) {
-		this.category = category;
+	public void setColor(String color) {
+		this.color = color;
 	}
 
 	public int getQuantity() {
@@ -74,5 +60,7 @@ public class Item implements IMappablePro
 	public void setImages(List<Image> images) {
 		this.images = images;
 	}
-		
+	
+	
+	
 }

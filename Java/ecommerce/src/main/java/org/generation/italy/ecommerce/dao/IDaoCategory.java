@@ -5,8 +5,7 @@ import java.util.List;
 import org.generation.italy.ecommerce.model.Category;
 
 
-public interface IDaoCategory 
-{
+public interface IDaoCategory {
 	List<Category>getCategories();
 	Category getCategory(int id);
 	int addCategory(Category c);

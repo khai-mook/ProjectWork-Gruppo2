@@ -8,7 +8,7 @@ import org.generation.italy.ecommerce.model.Category;
 import org.generation.italy.ecommerce.util.BasicDao;
 import org.springframework.beans.factory.annotation.Value;
 
-public class DaoCategory extends BasicDao implements IDaoCategory{
+public class DaoCategory extends BasicDao implements IDaoCategory {
 
 	public DaoCategory(
 			@Value("${db.address}")String dbAddress,

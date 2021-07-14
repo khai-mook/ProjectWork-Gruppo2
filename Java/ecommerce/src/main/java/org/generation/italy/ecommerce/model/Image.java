@@ -2,8 +2,7 @@ package org.generation.italy.ecommerce.model;
 
 import org.generation.italy.ecommerce.util.IMappablePro;
 
-public class Image implements IMappablePro
-{
+public class Image implements IMappablePro {
 
 	private int id;
 	private int itemid;
