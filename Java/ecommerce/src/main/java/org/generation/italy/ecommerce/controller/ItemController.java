@@ -41,6 +41,17 @@ public class ItemController {
 		return dao.getItem(id);
 	}
 	
+	@GetMapping("/{idType}")
+	/**
+	 * 
+	 * metodo che restituisce una lista di item attraverso l' item type
+	 * @param id del type degli items
+	 * @return un al lista di item
+	 */
+	public List<Item> getAllByType(@PathVariable int id ) {
+		return dao.getItems(id);
+	}
+	
 	@PostMapping("/item-type-id/{id}")
 	/**
 	 * metodo che aggiunge un Item
