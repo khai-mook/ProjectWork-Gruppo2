@@ -1,5 +1,5 @@
 create schema ecommerce;
-
+#drop database ecommerce;
 use ecommerce;
 
 -- Tabella per tutte le categorie di vestiti

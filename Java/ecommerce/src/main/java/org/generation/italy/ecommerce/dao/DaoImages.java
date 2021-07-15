@@ -15,8 +15,8 @@ public class DaoImages extends BasicDao implements IDaoImages{
 
 	public DaoImages(
 			@Value("${db.address}")String dbAddress,
-		    @Value("${db.address}")String user, 
-			@Value("${db.address}")String password) {
+		    @Value("${db.user}")String user, 
+			@Value("${db.password}")String password) {
 		super(dbAddress, user, password);
 		// TODO Auto-generated constructor stub
 	}

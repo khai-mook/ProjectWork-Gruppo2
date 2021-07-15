@@ -8,6 +8,7 @@ import org.generation.italy.ecommerce.model.Image;
 import org.generation.italy.ecommerce.model.Item;
 import org.generation.italy.ecommerce.util.BasicDao;
 import org.generation.italy.ecommerce.util.IMappablePro;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -24,7 +25,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class DaoItem extends BasicDao implements IDaoItem {
 
-	public DaoItem(String dbAddress, String user, String password) {
+	public DaoItem(@Value("${db.address}")String dbAddress, 
+			@Value("${db.user}")String user,
+			@Value("${db.password}")String password) {
 		super(dbAddress, user, password);
 
 	}

@@ -1,5 +1,6 @@
 package org.generation.italy.ecommerce.dao;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -9,10 +10,15 @@ import org.generation.italy.ecommerce.model.Item;
 import org.generation.italy.ecommerce.model.ItemType;
 import org.generation.italy.ecommerce.util.BasicDao;
 import org.generation.italy.ecommerce.util.IMappablePro;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Repository;
 // TODO aggiungere tag 
+@Repository
 public class DaoItemTypes extends BasicDao implements IDaoItemTypes {
 
-	public DaoItemTypes(String dbAddress, String user, String password) {
+	public DaoItemTypes(@Value("${db.address}")String dbAddress,
+			@Value("${db.user}")String user,
+			@Value("${db.password}")String password) {
 		super(dbAddress, user, password);
 		
 	}
