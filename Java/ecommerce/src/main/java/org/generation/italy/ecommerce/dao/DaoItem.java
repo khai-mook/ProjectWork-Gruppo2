@@ -91,6 +91,7 @@ public class DaoItem extends BasicDao implements IDaoItem {
 			Item item = IMappablePro.fromMap(Item.class, map);
 			List<Image> images = imageExtracted(item);
 			item.setImages(images);
+			ris.add(item);
 		}
 		return ris;
 	}
@@ -158,7 +159,9 @@ public class DaoItem extends BasicDao implements IDaoItem {
 				item.getSize(),
 				item.getColor(),
 				item.getQuantity(),
-				typeId);
+				typeId,
+				item.getId()
+				);
 	}
 
 	
