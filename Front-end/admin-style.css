@@ -1,0 +1,257 @@
+@font-face {
+  font-family: Verlag;
+  src: url("Verlag-Book.otf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: 100% Verlag;
+}
+
+button:hover {
+  text-decoration: underline;
+}
+
+button {
+  cursor: pointer;
+}
+
+header {
+  box-shadow: 4px 4px 4px #ccc;
+}
+
+.menu {
+  background-color: #fff;
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
+  height: 10vw;
+  max-height: 80px;
+  border-bottom: solid 8px #fdd3c7;
+}
+
+.person {
+  width: fit-content;
+  height: fit-content;
+  margin-left: 1vw;
+  background-color: #fff;
+  font-size: 4vw;
+  color: #000;
+  cursor: pointer;
+}
+
+.dropbutton {
+  font-size: 3.5vw;
+  margin-left: 0.1vw;
+  padding: 0.5vw;
+  text-align: center;
+  color: #000;
+  cursor: pointer;
+}
+
+.dropdown {
+  align-self: center;
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  left: 0.1vw;
+  width: fit-content;
+}
+
+.personal {
+  left: 1vw;
+}
+
+.dropdown-content button {
+  width: 20vw;
+  max-width: 200px;
+  background-color: #fff;
+  border: none;
+  border-radius: 0vw;
+  margin: 0.5vw;
+  padding: 0.8vw;
+  box-shadow: 4px 4px 4px #e0b1a4bb;
+  cursor: pointer;
+}
+
+.dropdown:hover .dropbutton {
+  background-color: #fdd3c7;
+  color: #fff;
+}
+
+.dropdown:hover .person {
+  background-color: #fdd3c7;
+  padding-bottom: 0.4vw;
+  color: #fff;
+}
+.dropdown:hover .dropdown-content {
+  /*hover*/
+  display: flex;
+  flex-direction: column;
+  background-color: #fdd3c7;
+  padding: 1vw;
+  border-radius: 0vw;
+  z-index: 1;
+  box-shadow: 5px 5px 5px #ccc;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-color: #fff8ad;
+  box-shadow: 4px 5px 5px #ccc;
+}
+
+.controls button {
+  margin: 1vw;
+  padding: 0.3vw;
+  background-color: #fdd3c7;
+  border: none;
+  box-shadow: 0px 4px 2px rgba(204, 204, 204, 0.2);
+}
+
+/* main */
+.grid {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  margin: auto;
+  width: 90vw;
+}
+
+.product {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-width: 25vw;
+  margin: auto;
+  margin-top: 2vw;
+  padding: 0.5vw;
+  padding-left: 0.8vw;
+  padding-bottom: 1vw;
+  background-color: #46d9cd;
+  box-shadow: 5px 5px 5px #ccc;
+}
+.product-text {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-size: 1.2vw;
+}
+.edit,
+.delete {
+  font-size: 1.5vw;
+  align-self: flex-end;
+  justify-self: flex-end;
+  margin: none;
+  padding: none;
+  cursor: pointer;
+}
+
+.product img {
+  margin: auto;
+  width: 10vw;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  width: 60vw;
+  background-color: #fdd3c7;
+  box-shadow: 5px 5px 10px rgb(139, 133, 133);
+}
+
+.modal-content {
+  width: 95%;
+  margin: 0.5vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.modal .close {
+  position: fixed;
+  margin: 0.2vw;
+  top: 0%;
+  right: 0%;
+  cursor: pointer;
+}
+
+.input-column {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  margin: 1vw;
+}
+
+.button-column {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  width: 40%;
+}
+
+.button-column button {
+  border: none;
+  width: 90%;
+  background-color: #fff;
+  border: none;
+  border-radius: 0vw;
+  margin: 0.8vw;
+  padding: 0.8vw;
+  box-shadow: 4px 4px 4px #e0b1a4bb;
+  cursor: pointer;
+}
+
+.input-column label {
+  display: block;
+  margin: auto;
+  margin-top: 0.8vw;
+}
+
+.input-column input {
+  width: 70%;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: fit-content;
+  background-color: #fff8ad;
+  color: #000;
+  text-align: center;
+  padding: 0.5vw;
+  /* Position the tooltip */
+  position: absolute;
+  left: 49%;
+  top: -50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.tooltip:nth-child(1) .tooltiptext {
+  top: -70%;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
