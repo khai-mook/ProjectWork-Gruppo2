@@ -49,7 +49,7 @@ public class DaoImages extends BasicDao implements IDaoImages{
 	 * @author Gruppo2, Andrea
 	 */
 	public int addImage(Image i) {
-		return insertAndGetId("INSERT INTO images (itemid,filepath)VALUES (?,?)",i.getItemid(),i.getFilepath());
+		return insertAndGetId("INSERT INTO images (itemtypeid,filepath)VALUES (?,?)",i.getItemtypeid(),i.getFilepath());
 	}
 
 	@Override
@@ -58,7 +58,7 @@ public class DaoImages extends BasicDao implements IDaoImages{
 	 * @author Gruppo2, Andrea
 	 */
 	public boolean updateImage(Image i) {
-		return isExecute("UPDATE images SET itemid=?,filepath=? WHERE id=?",i.getItemid(),i.getFilepath(),i.getId());
+		return isExecute("UPDATE images SET itemtypeid=?,filepath=? WHERE id=?",i.getItemtypeid(),i.getFilepath(),i.getId());
 	}
 
 	@Override

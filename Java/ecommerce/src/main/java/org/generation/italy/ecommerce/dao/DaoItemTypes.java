@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.generation.italy.ecommerce.model.Category;
+import org.generation.italy.ecommerce.model.Image;
 import org.generation.italy.ecommerce.model.Item;
 import org.generation.italy.ecommerce.model.ItemType;
 import org.generation.italy.ecommerce.util.BasicDao;
@@ -44,6 +45,15 @@ public class DaoItemTypes extends BasicDao implements IDaoItemTypes {
 						);
 			}
 			type.setItems(items);
+			List<Map<String,String>>imagesMaps=getAll("select * from images where itemtypeid=?",map.get("id"));
+			List<Image> images=new ArrayList<>();
+			for (Map<String, String> imageMap : imagesMaps) {
+				images.add(IMappablePro.
+						fromMap(Image.class, imageMap)
+						);
+				
+			}
+			type.setImages(images);
 			ris.add(type);
 		}
 		return ris;
@@ -61,6 +71,9 @@ public class DaoItemTypes extends BasicDao implements IDaoItemTypes {
 		List<Item> items = extracted(itemMaps);
 		type.setItems(items);
 		type.setCategory(category);
+		List<Map<String,String>> imagesMaps=getAll("select* from images where itemtypeid=?",map.get("id"));
+		List<Image>images=extractedImages(imagesMaps);
+		type.setImages(images);
 		return type;
 	}
 
@@ -83,6 +96,15 @@ public class DaoItemTypes extends BasicDao implements IDaoItemTypes {
 						)
 				);
 		return category;
+	}
+	
+	private List<Image> extractedImages(List<Map<String,String>> imagesMaps){
+		List<Image> images=new ArrayList<>();
+		for (Map<String,String> imageMap : imagesMaps) {
+			images.add(IMappablePro.
+					fromMap(Image.class,imageMap));
+		}
+		return images;
 	}
 
 //============================METODI CRUD=======================================

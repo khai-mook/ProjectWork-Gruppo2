@@ -12,8 +12,10 @@ public class ItemType implements IMappablePro {
 	private int discount;
 	private Category category;
 	private List<Item> items;
+	private List<Image> images;
+
 	
-	public ItemType(int id, String name, double price, int discount, Category category,List<Item> items) {
+	public ItemType(int id, String name, double price, int discount, Category category,List<Item> items,List<Image>images) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -21,6 +23,7 @@ public class ItemType implements IMappablePro {
 		this.discount = discount;
 		this.category = category;
 		this.items = items;
+		this.images=images;
 	}
 
 	public ItemType() {
@@ -28,6 +31,14 @@ public class ItemType implements IMappablePro {
 
 	public int getId() {
 		return id;
+	}
+
+	public List<Image> getImages() {
+		return images;
+	}
+
+	public void setImages(List<Image> images) {
+		this.images = images;
 	}
 
 	public void setId(int id) {
