@@ -12,6 +12,7 @@ create table categories (
 create table itemTypes(
 	id int primary key auto_increment,
     name varchar(200),
+    description varchar(400),
     price double,
     discount int,
     categoryid int,
@@ -25,13 +26,16 @@ create table items(
     color varchar(200),
     quantity int,
     typeid int,
-    foreign key(typeid) references itemTypes(id) on delete cascade
+    foreign key(typeid) references itemTypes(id) on delete cascade,
+    constraint u_typecolorsize unique(typeid, size, color)
 );
 
 -- Tabella contenente i path alle immagini dei prodotti
 create table images (
 	id int primary key auto_increment,
     filepath varchar(200),
-    itemid int,
-    foreign key(itemid) references items(id) on delete cascade
+    typeid int,
+    foreign key(typeid) references itemtypes(id) on delete cascade
 );
+
+-- drop schema ecommerce
