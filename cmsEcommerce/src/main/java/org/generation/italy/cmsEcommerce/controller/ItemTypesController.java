@@ -47,10 +47,6 @@ public class ItemTypesController {
 	}
 	
 	
-	
-	
-	
-	
 	@PostMapping
 	/**
 	 * metodo che aggiunge un Itemtype
@@ -122,6 +118,12 @@ public class ItemTypesController {
 	
 	
 }
+
+
+
+
+
+
 
 
 

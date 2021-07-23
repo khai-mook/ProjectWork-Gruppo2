@@ -10,18 +10,27 @@ public class Item implements IMappablePro {
 	private String size;
 	private String color;
 	private int quantity;
-	List<Image> images;
+	private String description;
 	
-	public Item(int id, String size, String color, int quantity, List<Image> images) {
+	public Item(int id, String size, String color, int quantity, String description) {
 		super();
 		this.id = id;
 		this.size = size;
 		this.color = color;
 		this.quantity = quantity;
-		this.images = images;
+		this.description = description;
 	}
 	
 	public Item() {}
+	
+	
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
 	public int getId() {
 		return id;
@@ -55,13 +64,7 @@ public class Item implements IMappablePro {
 		this.quantity = quantity;
 	}
 
-	public List<Image> getImages() {
-		return images;
-	}
 
-	public void setImages(List<Image> images) {
-		this.images = images;
-	}
 	
 	
 	

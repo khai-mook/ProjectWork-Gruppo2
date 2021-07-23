@@ -56,8 +56,8 @@ public class DaoItem extends BasicDao implements IDaoItem {
 		List<Map<String, String>> maps = getAll("select * from items");
 		for(Map<String, String> map : maps) {
 			Item item = IMappablePro.fromMap(Item.class, map);
-			List<Image> images = imageExtracted(item);
-			item.setImages(images);
+			//List<Image> images = imageExtracted(item);
+			//item.setImages(images);
 			ris.add(item);
 		}
 		return ris;
@@ -89,8 +89,6 @@ public class DaoItem extends BasicDao implements IDaoItem {
 		List<Map<String, String>> maps = getAll("select * from items where typeid=?", typeId);
 		for(Map<String, String> map : maps) {
 			Item item = IMappablePro.fromMap(Item.class, map);
-			List<Image> images = imageExtracted(item);
-			item.setImages(images);
 			ris.add(item);
 		}
 		return ris;
@@ -117,16 +115,6 @@ public class DaoItem extends BasicDao implements IDaoItem {
 		//assegno le immagini all'item
 				
 		Item item = IMappablePro.fromMap(Item.class, getOne("select * from items where id=?", id));
-		List<Map<String, String>> imageMaps = getAll("select * from images where id=?", id);
-		List<Image> images = new ArrayList<>();
-		for(Map<String, String> imageMap : imageMaps) {
-			images.add(
-					IMappablePro.
-					fromMap(Image.class, imageMap)
-					);
-
-		}
-		item.setImages(images);
 		return item;
 	}
 
@@ -139,10 +127,11 @@ public class DaoItem extends BasicDao implements IDaoItem {
 	 * @return una insert con l'id autogenerato
 	 */
 	public int addItem(Item item, int typeId) {
-		return insertAndGetId("insert into items(size, color, quantity, typeid) values(?,?,?,?)",
+		return insertAndGetId("insert into items(size, color, quantity,description ,typeid) values(?,?,?,?,?)",
 				item.getSize(),
 				item.getColor(),
 				item.getQuantity(),
+				item.getDescription(),
 				typeId);
 	}
 
@@ -155,10 +144,11 @@ public class DaoItem extends BasicDao implements IDaoItem {
 	 * @return un risultato true / false se la modifica è avvenuta o meno
 	 */
 	public boolean updateItem(Item item, int typeId) {
-		return isExecute("update items set size=?, color=?, quantity=?, typeid=? where id=?",
+		return isExecute("update items set size=?, color=?, quantity=?,description=? typeid=? where id=?",
 				item.getSize(),
 				item.getColor(),
 				item.getQuantity(),
+				item.getDescription(),
 				typeId,
 				item.getId()
 				);
@@ -176,27 +166,7 @@ public class DaoItem extends BasicDao implements IDaoItem {
 		return isExecute("delete from items where id=?", id);
 	}
 
-	//=============================METODI ACCESSORI=================================
-	/**
-	 * Questo metodo accessorio si occupa di rifattorizzare determinati pezzi di codice per
-	 *la ripetizione della sua lettura. Nel caso specifico istanzia una lista di immagini contenente 
-	 *tutte le immagini in base all'id dell'item e richieste tramite la query SQL.
-	 *
-	 * @param item
-	 * @return
-	 */
-	private List<Image> imageExtracted(Item item) {
-		List<Map<String, String>> imageMaps = getAll("select * from images where id=?", item.getId());
-		List<Image> images = new ArrayList<>();
-		for(Map<String, String> imageMap : imageMaps) {
-			images.add(
-					IMappablePro.
-					fromMap(Image.class, imageMap)
-					);
 
-		}
-		return images;
-	}
 
 
 

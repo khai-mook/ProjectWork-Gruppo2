@@ -5,13 +5,13 @@ import org.generation.italy.ecommerce.util.IMappablePro;
 public class Image implements IMappablePro {
 
 	private int id;
-	private int itemid;
+	private int itemtypeid;
 	private String filepath;
 	
-	public Image(int id, int itemid, String filepath) 
+	public Image(int id, int itemtypeid, String filepath) 
 	{
 		this.id = id;
-		this.itemid = itemid;
+		this.itemtypeid = itemtypeid;
 		this.filepath = filepath;
 	}
 
@@ -26,12 +26,12 @@ public class Image implements IMappablePro {
 		this.id = id;
 	}
 
-	public int getItemid() {
-		return itemid;
+	public int getItemtypeid() {
+		return itemtypeid;
 	}
 
-	public void setItemid(int itemid) {
-		this.itemid = itemid;
+	public void setItemtypeid(int itemtypeid) {
+		this.itemtypeid = itemtypeid;
 	}
 
 	public String getFilepath() {
@@ -43,3 +43,4 @@ public class Image implements IMappablePro {
 	}
 		
 }
+
